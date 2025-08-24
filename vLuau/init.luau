@@ -1,5 +1,5 @@
-local compileSource = loadstring(game:HttpGet("https://raw.githubusercontent.com/LuckyScripters/Vital/refs/heads/main/vLuau/FiOne.luau", true))()
-local createExecutable = loadstring(game:HttpGet("https://raw.githubusercontent.com/LuckyScripters/Vital/refs/heads/main/vLuau/Yueliang.luau", true))()
+local compileSource = loadstring(game:HttpGet("https://raw.githubusercontent.com/LuckyScripters/Vital/refs/heads/main/vLuau/Yueliang.luau", true))()
+local createExecutable = loadstring(game:HttpGet("https://raw.githubusercontent.com/LuckyScripters/Vital/refs/heads/main/vLuau/FiOne.luau", true))()
 
 getfenv().script = nil
 
