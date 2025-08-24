@@ -33,7 +33,7 @@ return function(sourceCode, environment)
                 return registeryEnvironment[index]
             end
             if executorEnvironment[index] then
-                return registeryEnvironment[index]
+                return executorEnvironment[index]
             end
             return rawget(environment, index)
         end,
