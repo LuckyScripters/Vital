@@ -4,7 +4,7 @@ local createExecutable = loadstring(game:HttpGet("https://raw.githubusercontent.
 getfenv().script = nil
 
 local randomGenerator = Random.new()
-local checkcaller, print, pcall, table, rawget, getfenv, setfenv = checkcaller, print, pcall, table, rawget, getfenv, setfenv
+local checkcaller, print, pcall, rawget, getfenv, setfenv = checkcaller, print, pcall, rawget, getfenv, setfenv
 local executorEnvironment, registeryEnvironment = table.clone(getgenv()), table.clone(getrenv())
 
 local function generateScriptName(length)
@@ -36,7 +36,6 @@ return function(sourceCode, environment)
             return rawget(environment, index)
         end,
     })
-    environment = table.freeze(environment)
     local success, result = pcall(function()
         local bytecode = compileSource(sourceCode, scriptName)
         executable = createExecutable(bytecode, environment)
