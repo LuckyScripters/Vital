@@ -5,6 +5,7 @@ getfenv().script = nil
 
 local randomGenerator = Random.new()
 local checkcaller, print, pcall, table, rawget, getfenv, setfenv = checkcaller, print, pcall, table, rawget, getfenv, setfenv
+local executorEnvironment, registeryEnvironment = getgenv(), getrenv()
 
 local function generateScriptName(length)
     local name = {}
@@ -23,16 +24,16 @@ return function(sourceCode, environment)
     debug.setmemorycategory(scriptName)
     environment = environment or getfenv(2)
     environment.script = nil
-    for index, value in getrenv() do
-        environment[index] = value
-    end
-    for index, value in getgenv() do
-        environment[index] = value
-    end
     setmetatable(environment, {
         __index = function(_, index)
             if not checkcaller() or debug.getmemorycategory() ~= scriptName then
                 return nil
+            end
+            if registeryEnvironment[index] then
+                return registeryEnvironment[index]
+            end
+            if executorEnvironment[index] then
+                return registeryEnvironment[index]
             end
             return rawget(environment, index)
         end,
