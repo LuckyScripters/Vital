@@ -1,8 +1,6 @@
 local compileSource = loadstring(game:HttpGet("https://raw.githubusercontent.com/LuckyScripters/Vital/refs/heads/main/vLuau/Yueliang.luau", true))()
 local createExecutable = loadstring(game:HttpGet("https://raw.githubusercontent.com/LuckyScripters/Vital/refs/heads/main/vLuau/FiOne.luau", true))()
 
-getfenv().script = nil
-
 local randomGenerator = Random.new()
 local checkcaller, print, pcall, rawget, getfenv, setfenv = checkcaller, print, pcall, rawget, getfenv, setfenv
 local executorEnvironment, registeryEnvironment = table.clone(getgenv()), table.clone(getrenv())
