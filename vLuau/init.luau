@@ -25,11 +25,11 @@ return function(sourceCode, environment)
             if not checkcaller() then
                 return nil
             end
-            if registeryEnvironment[index] then
-                return registeryEnvironment[index]
-            end
             if executorEnvironment[index] then
                 return executorEnvironment[index]
+            end
+            if registeryEnvironment[index] then
+                return registeryEnvironment[index]
             end
             return rawget(environment, index)
         end,
