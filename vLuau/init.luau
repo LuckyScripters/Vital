@@ -19,21 +19,6 @@ return function(sourceCode, environment)
     local executable = nil
     local scriptName = generateScriptName(randomGenerator:NextInteger(5, 10))
     environment = environment or getfenv(2)
-    environment.script = nil
-    setmetatable(environment, {
-        __index = function(_, index)
-            if not checkcaller() then
-                return nil
-            end
-            if executorEnvironment[index] then
-                return executorEnvironment[index]
-            end
-            if registeryEnvironment[index] then
-                return registeryEnvironment[index]
-            end
-            return rawget(environment, index)
-        end,
-    })
     local success, result = pcall(function()
         local bytecode = compileSource(sourceCode, scriptName)
         executable = createExecutable(bytecode, environment)
